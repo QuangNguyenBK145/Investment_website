@@ -1,0 +1,32 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+
+# Virtual environment
+venv/
+.env
+.env.*
+
+# Jupyter
+.ipynb_checkpoints
+
+# VSCode config
+.vscode/
+
+# Mac OS
+.DS_Store
+
+# Data files (tùy chọn, nếu không muốn push dữ liệu)
+data/*.csv
+data/*.xlsx
+data/*.db
+data/*.json
+
+# Streamlit cache
+.streamlit/
+
+# Log files
+*.log
