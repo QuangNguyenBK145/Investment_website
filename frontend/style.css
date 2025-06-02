@@ -9,6 +9,14 @@ body {
     color: white;
 }
 
+#dashboard-title {
+    background-color: #3D2A5B;
+    border-radius: 10px;
+    border: 10px #120016;
+    padding: 1px;
+
+}
+
 .dashboard-layout {
     display: flex;
     gap: 20px;
