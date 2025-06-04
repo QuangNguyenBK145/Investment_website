@@ -9,34 +9,34 @@
 </head>
 
 <body>
-    <div id="dashboard-title">
-        <h1>PORTFOLIO MANAGEMENT</h1>
+    <div>
+        <h1 id="dashboard-title">PORTFOLIO MANAGEMENT</h1>
     </div>
+    <section class="overview-card">
+        <div class="card">
+            <h3>NET ASSET VALUE</h3>
+            <P>VND 3,202,875,602</P>
+        </div>
+        <div class="card">
+            <h3>TOTAL ASSET</h3>
+            <P>VND 3,202,875,602</P>
+        </div>
+        <div class="card">
+            <h3>MARGIN</h3>
+            <p>1</p>
+        </div>
+        <div class="card">
+            <h3>CASH</h3>
+            <p>1</p>
+        </div>
+        <div class="card">
+            <h3>VNINDEX</h3>
+            <p>1</p>
+        </div>
+    </section>
+
     <div class="dashboard-layout">
         <div class="left-panel">
-            <div>
-                <h2>NET ASSET VALUE</h2>
-                <P>VND 3,202,875,602</P>
-                <P style="color: #27e9b5;">&#9650; 0.18% </P>
-            </div>
-
-            <div>
-                <h2>TOTAL ASSET</h2>
-                <p>VND 3,202,875,602</p>
-            </div>
-
-            <div>
-                <h2>TARGET PROFIT</h2>
-            </div>
-
-            <div>
-                <h2>MARGIN RATIO</h2>
-            </div>
-
-            <div>
-                <h2>HISTORY PnL</h2>
-            </div>
-
             <div>
                 <table>
                     <thead>
@@ -96,6 +96,10 @@
 
         </div>
         <div class="right-panel">
+            <section class="chart-container">
+                <h2 style="text-align: center;">Biều đồ NAV so với VNINDEX</h2>
+                <canvas id="navChart" width="400" height="150"></canvas>
+            </section>
             <table>
                 <thead>
                     <tr>
@@ -169,6 +173,53 @@
             </table>
         </div>
     </div>
+    <div class="form">
+        <form action="#" method="post">
+            <label for="stock">Mã cổ phiếu:</label>
+            <input type="text" id="stock" name="stock"><br>
+
+            <label for="quantity">Số lượng:</label>
+            <input type="text" id="quantity" name="quantity"><br>
+
+            <label for="price">Giá :</label>
+            <input type="text" id="price" name="price"><br>
+
+            <input type="submit" value="Thêm vào danh mục">
+        </form>
+    </div>
+    <section class="notification">
+        <p class="success"> NAV đã tăng 5% trong hôm nay</p>
+        <p class="warning">NAV giảm -7% - cần xem xét lại danh mục</p>
+    </section>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        const ctx = document.getElementById('navChart').getContext('2d');
+
+        const navChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['T2', 'T3', 'T4', 'T5', 'T6'], // Giả định ngày
+                datasets: [{
+                    label: 'NAV (VND)',
+                    data: [3000000000, 3100000000, 3050000000, 3200000000, 3180000000],
+                    borderColor: '#ffd700',
+                    backgroundColor: 'rgba(255, 215, 0, 0.2)',
+                    fill: false,
+                    tension: 0.3
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false }
+                },
+                scales: {
+                    y: { ticks: { callback: value => value.toLocaleString() + ' ₫' } }
+                }
+            }
+        });
+    </script>
 
 </body>
 
